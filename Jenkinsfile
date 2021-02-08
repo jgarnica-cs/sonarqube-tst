@@ -1,7 +1,4 @@
-node {
-  agent {
-    label 'Master'
-  }
+node('Master') {
   stage('SCM') {
     checkout scm
   }
