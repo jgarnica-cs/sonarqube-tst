@@ -26,6 +26,14 @@ public class TestController
     @RequestMapping(value = "/test", method = RequestMethod.GET)
     public ResponseEntity<Void> call() {
         logger.info("Calling to the service");
+        logger.info("This is a new line hahahahaha");
+        return ResponseEntity.ok(null);
+    }
+
+    @RequestMapping(value = "/test/new", method = RequestMethod.GET)
+    public ResponseEntity<Void> newTest() {
+        logger.info("Calling to the service 2");
+        logger.info("This is a new line hahahahaha");
         return ResponseEntity.ok(null);
     }
 }
