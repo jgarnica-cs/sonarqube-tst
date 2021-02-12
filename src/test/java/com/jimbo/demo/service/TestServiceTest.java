@@ -8,8 +8,7 @@ import org.mockito.runners.MockitoJUnitRunner;
 @RunWith(MockitoJUnitRunner.class)
 public class TestServiceTest
 {
-    @Mock
-    private TestServiceImpl testService;
+    private TestServiceImpl testService = new TestServiceImpl();
 
     @Test
     public void test() {
