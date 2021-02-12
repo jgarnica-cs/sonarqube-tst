@@ -12,5 +12,6 @@ public class TestServiceImpl implements TestService
     public void testFunction()
     {
         logger.info("This is a test");
+        logger.info("This is another test beatch");
     }
 }
