@@ -1,5 +1,6 @@
 package com.jimbo.demo.service;
 
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -17,5 +18,12 @@ public class TestServiceTest
         logger.info("I'm Mr. Meeseeks. Look at me!");
         logger.info("Hey there, I'm Mr. Meeseeks");
         testService.testFunction();
+    }
+
+    @Test
+    public void failureTest() {
+        logger.info("I'mn going to fail motherflower");
+        testService.testFunction();
+        Assert.assertFalse(true);
     }
 }
