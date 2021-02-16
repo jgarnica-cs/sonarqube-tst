@@ -35,7 +35,8 @@ public class TestController
     public ResponseEntity<Void> newTest() {
         logger.info("Calling to the service 2");
         logger.info("This is a new line hahahahaha");
-        logger.info("This is anotherr new line hahahaha");
+        logger.info("This is another new line hahahaha");
         return ResponseEntity.ok(null);
+
     }
 }
