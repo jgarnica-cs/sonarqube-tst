@@ -10,16 +10,15 @@ public class TestControllerTest
     @Mock
     private TestServiceImpl testService;
 
-    @InjectMocks
-    private TestController testController;
-
     @Test
     public void test() {
+        TestController testController = new TestController(testService);
         testController.call();
     }
 
     @Test
     public void test2() {
+        TestController testController = new TestController(testService);
         testController.newTest();
     }
 }
