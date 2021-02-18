@@ -22,7 +22,7 @@ public class TestServiceTest
 
     @Test
     public void failureTest() {
-        logger.info("I'mn going to fail motherflower");
+        logger.info("I'mn going to fail jjjj");
         testService.testFunction();
         Assert.assertFalse(true);
     }
