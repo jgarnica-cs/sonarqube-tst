@@ -15,8 +15,6 @@ public class TestServiceTest
 
     @Test
     public void test() {
-        logger.info("I'm Mr. Meeseeks. Look at me!");
-        logger.info("Hey there, I'm Mr. Meeseeks");
         testService.testFunction();
     }
 
