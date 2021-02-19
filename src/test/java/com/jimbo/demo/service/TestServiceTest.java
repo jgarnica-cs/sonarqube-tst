@@ -15,12 +15,14 @@ public class TestServiceTest
 
     @Test
     public void test() {
+        logger.info("I'm Mr. Meeseeks. Look at me!");
+        logger.info("Hey there, I'm Mr. Meeseeks");
         testService.testFunction();
     }
 
     @Test
     public void failureTest() {
-        logger.info("I'mn going to fail dude!");
+        logger.info("I'mn going to fail motherflower");
         testService.testFunction();
         Assert.assertFalse(true);
     }
