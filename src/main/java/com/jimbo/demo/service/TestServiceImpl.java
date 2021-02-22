@@ -18,6 +18,8 @@ public class TestServiceImpl implements TestService
     }
 
     public void testFunction2() {
-        logger.info("Holiiiiiii");
+        logger.info("Hello world!");
+        logger.info("We're actually doing some records here :)");
+        logger.info("Why don't you test me?");
     }
 }
