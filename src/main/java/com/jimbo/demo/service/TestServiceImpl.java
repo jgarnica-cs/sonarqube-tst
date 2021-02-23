@@ -15,11 +15,12 @@ public class TestServiceImpl implements TestService
         logger.info("This is another test dude");
         logger.info("Hello world!");
         logger.info("Hey I'm Mr. Meeseeks, look at me");
+        logger.info("Hey there, I'm doing some test :)");
+        logger.info("And I'm going to be executed on sonarqube");
+
     }
 
     public void testFunction2() {
         logger.info("Hello world!");
-        logger.info("We're actually doing some records here :)");
-        logger.info("Why don't you test me?");
     }
 }
