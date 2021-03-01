@@ -8,8 +8,7 @@ node('Master') {
         echo "Showing event ID"
         if (env.CHANGE_ID) {
             echo env.CHANGE_ID
-            echo env
-            echo env.pullRequest
+            echo sh(script: 'env|sort', returnStdout: true)
         }
 
     }
