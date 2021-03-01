@@ -10,7 +10,7 @@ node('Master') {
             echo env.CHANGE_ID
             echo sh(script: 'env|sort', returnStdout: true)
         }
-
+        echo "Holi"
     }
   }
 }
