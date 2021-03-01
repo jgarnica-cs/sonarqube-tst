@@ -9,7 +9,7 @@ node {
         if (env.CHANGE_ID) {
             echo env.CHANGE_ID
             echo sh(script: 'env|sort', returnStdout: true)
-            pullRequest.addLabel('Build Failed')
+            pullRequest.review('APPROVE')
         }
         echo "Holi"
     }
