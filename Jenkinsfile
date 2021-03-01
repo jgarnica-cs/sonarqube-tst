@@ -8,8 +8,8 @@ node('Master') {
         echo "Showing event ID"
         if (env.CHANGE_ID) {
             echo env.CHANGE_ID
-                    pullRequest.title = 'Updated title'
-                    pullRequest.body = pullRequest.body + '\nEdited by Pipeline'
+            echo env
+            echo env.pullRequest
         }
 
     }
