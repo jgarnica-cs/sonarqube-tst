@@ -11,7 +11,7 @@ node {
             echo env.CHANGE_ID
             try {
                  sh "${mvn}/bin/mvn clean install"
-                 pullRequest.review('APPROVE', 'Change is the essential process of all existence.')
+                 pullRequest.review('APPROVE', 'The execution, coverage and unit test failure verification passed successfully. This can be merged without issues.')
             } catch (all) {
                 pullRequest.review('REQUEST_CHANGES', 'Change is the essential process of all existence.')
             }
