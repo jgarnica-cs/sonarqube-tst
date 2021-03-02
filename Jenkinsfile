@@ -12,6 +12,7 @@ node {
             pullRequest.review('APPROVE')
         }
         echo "Holi"
+        echo "adiosin"
     }
   }
 }
