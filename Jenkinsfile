@@ -8,11 +8,10 @@ node {
         echo "Showing event ID"
         if (env.CHANGE_ID) {
             echo env.CHANGE_ID
-            echo sh(script: 'env|sort', returnStdout: true)
-            pullRequest.review('APPROVE')
+
+            // echo sh(script: 'env|sort', returnStdout: true)
+            pullRequest.review('REQUEST_CHANGES', 'Change is the essential process of all existence.')
         }
-        echo "Holi"
-        echo "adiosin"
     }
   }
 }
