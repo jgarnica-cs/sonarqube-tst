@@ -11,8 +11,10 @@ node {
             echo env.CHANGE_ID
             try {
                  sh "${mvn}/bin/mvn clean install"
+                 pullRequest.addLabel('Jenkins review passed');
                  pullRequest.review('APPROVE', 'The execution, coverage and unit test failure verification passed successfully. This can be merged without issues.')
             } catch (all) {
+                pullRequest.addLabel('Jenkins review failed');
                 pullRequest.review('REQUEST_CHANGES', 'A failure was detected.')
             }
         }
