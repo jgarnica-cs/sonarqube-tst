@@ -16,7 +16,8 @@ node {
                        execPattern: 'target/*.exec',
                        classPattern: 'target/classes',
                        sourcePattern: 'src/main/java',
-                       exclusionPattern: 'src/test*'
+                       exclusionPattern: 'src/test*',
+                       minimumInstructionCoverage: '100'
                  )
                  pullRequest.addLabel('Jenkins review passed')
                  pullRequest.removeLabel('Jenkins review failed')
