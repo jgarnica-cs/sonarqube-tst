@@ -2,7 +2,7 @@ node {
   stage('SCM') {
     checkout scm
   }
-  stage('SonarQube Analysis') {
+  stage('Analyzing UTs') {
     withEnv(['PATH+EXTRA=/usr/sbin:/usr/bin:/sbin:/bin']) {
 
         def mvn = tool 'Maven 3.6.3';
@@ -10,7 +10,14 @@ node {
         if (env.CHANGE_ID) {
             echo env.CHANGE_ID
             try {
-                 sh "${mvn}/bin/mvn clean install"
+                // Checkout to develop and run mvn test
+                 sh "${mvn}/bin/mvn test"
+                 jacoco(
+                       execPattern: 'target/*.exec',
+                       classPattern: 'target/classes',
+                       sourcePattern: 'src/main/java',
+                       exclusionPattern: 'src/test*'
+                 )
                  pullRequest.addLabel('Jenkins review passed')
                  pullRequest.removeLabel('Jenkins review failed')
                  pullRequest.review('APPROVE', 'The execution, coverage and unit test failure verification passed successfully. This can be merged without issues.')
