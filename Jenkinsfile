@@ -17,7 +17,7 @@ node {
                        classPattern: 'target/classes',
                        sourcePattern: 'src/main/java',
                        exclusionPattern: 'src/test*',
-                       minimumInstructionCoverage: '50'
+                       minimumInstructionCoverage: '100'
                  )
                  echo "Holiiiiiii"
                  pullRequest.removeLabel('Jenkins review failed')
