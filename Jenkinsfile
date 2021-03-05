@@ -34,8 +34,14 @@ node {
                 } else {
                     pullRequest.review('REQUEST_CHANGES', 'Error on the build')
                 }
-                pullRequest.removeLabel('JenkinsReviewPassed')
-                pullRequest.addLabel('JenkinsReviewFailed')
+
+                try {
+                    pullRequest.removeLabel('JenkinsReviewPassed')
+                    pullRequest.addLabel('JenkinsReviewFailed')
+                } catch(ex) {
+                    echo 'Finished'
+                }
+
             }
         }
     }
