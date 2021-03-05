@@ -30,13 +30,12 @@ node {
                 echo "${all}"
                 echo 'on the exception! '
                 if(all == "hudson.AbortException: script returned exit code 1") {
-                    pullRequest.addLabel('The build had failed. Maybe some of your unit tests are failing up')
+                    pullRequest.review('REQUEST_CHANGES', 'The build had failed. Maybe some of your unit tests are failing up')
                 } else {
-                    pullRequest.addLabel('Error on the build')
+                    pullRequest.review('REQUEST_CHANGES', 'Error on the build')
                 }
                 pullRequest.removeLabel('Jenkins review passed')
-                pullRequest.review('REQUEST_CHANGES', 'A failure was detected.')
-
+                pullRequest.addLabel('Jenkins review failed')
             }
         }
     }
