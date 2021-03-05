@@ -12,11 +12,12 @@ node {
             try {
                 // Checkout to develop and run mvn test
                  sh "${mvn}/bin/mvn test"
-                 jacoco(
+                 def results = jacoco(
                        execPattern: 'target/*.exec',
                        classPattern: 'target/classes',
                        sourcePattern: 'src/main/java',
-                       exclusionPattern: 'src/test*'
+                       exclusionPattern: 'src/test*',
+                       returnStdout: 'true'
                  )
 
                  echo sh(script: 'env|sort', returnStdout: true)
