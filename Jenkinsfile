@@ -27,6 +27,7 @@ node {
 
             } catch (all) {
                 echo "${all}"
+                echo 'on the exception! '
                 pullRequest.addLabel('Jenkins review failed')
                 pullRequest.removeLabel('Jenkins review passed')
                 pullRequest.review('REQUEST_CHANGES', 'A failure was detected.')
