@@ -24,13 +24,19 @@ node {
                  pullRequest.addLabel('Jenkins review passed')
                  pullRequest.review('APPROVE', 'The execution, coverage and unit test failure verification passed successfully. This can be merged without issues.')
 
+                sh 'ls'
 
             } catch (all) {
                 echo "${all}"
                 echo 'on the exception! '
-                pullRequest.addLabel('Jenkins review failed')
+                if(all == "hudson.AbortException: script returned exit code 1") {
+                    pullRequest.addLabel('The build had failed. Maybe some of your unit tests are failing up')
+                } else {
+                    pullRequest.addLabel('Error on the build')
+                }
                 pullRequest.removeLabel('Jenkins review passed')
                 pullRequest.review('REQUEST_CHANGES', 'A failure was detected.')
+
             }
         }
     }
