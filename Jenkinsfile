@@ -12,13 +12,12 @@ node {
             try {
                 // Checkout to develop and run mvn test
                  sh "${mvn}/bin/mvn test"
-                 def results = jacoco(
+                 def coverage = jacoco(
                        execPattern: 'target/*.exec',
                        classPattern: 'target/classes',
                        sourcePattern: 'src/main/java',
-                       exclusionPattern: 'src/test*',
-                       returnStdout: 'true'
-                 )
+                       exclusionPattern: 'src/test*'
+                 ).getPercentageFloat()
 
                  echo sh(script: 'env|sort', returnStdout: true)
 
