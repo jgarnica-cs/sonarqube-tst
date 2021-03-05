@@ -19,8 +19,9 @@ node {
                        exclusionPattern: 'src/test*',
                        minimumInstructionCoverage: '50'
                  )
-                 pullRequest.addLabel('Jenkins review passed')
+                 echo "Holiiiiiii"
                  pullRequest.removeLabel('Jenkins review failed')
+                 pullRequest.addLabel('Jenkins review passed')
                  pullRequest.review('APPROVE', 'The execution, coverage and unit test failure verification passed successfully. This can be merged without issues.')
 
 
