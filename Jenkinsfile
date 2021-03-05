@@ -20,8 +20,8 @@ node {
                        minimumInstructionCoverage: '100'
                  )
                  echo "Holiiiiiii"
-                 pullRequest.removeLabel('Jenkins review failed')
-                 pullRequest.addLabel('Jenkins review passed')
+                 pullRequest.removeLabel('JenkinsReviewFailed')
+                 pullRequest.addLabel('JenkinsReviewPassed')
                  pullRequest.review('APPROVE', 'The execution, coverage and unit test failure verification passed successfully. This can be merged without issues.')
 
                 sh 'ls'
@@ -34,8 +34,8 @@ node {
                 } else {
                     pullRequest.review('REQUEST_CHANGES', 'Error on the build')
                 }
-                pullRequest.removeLabel('Jenkins review passed')
-                pullRequest.addLabel('Jenkins review failed')
+                pullRequest.removeLabel('JenkinsReviewPassed')
+                pullRequest.addLabel('JenkinsReviewFailed')
             }
         }
     }
