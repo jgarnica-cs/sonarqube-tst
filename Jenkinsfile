@@ -20,7 +20,7 @@ node {
                        minimumLineCoverage: coverage
                  )
 
-                 def jacocoReport = sh 'cat target/site/jacoco/index.html'
+                 def jacocoReport = sh 'cat target/site/jacoco/index.html | grep <td class="ctr2">'
 
                  // Getting information from html
                  def ulDom = new XmlSlurper().parseText(jacocoReport)
