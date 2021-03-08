@@ -20,13 +20,13 @@ node {
                        minimumLineCoverage: coverage
                  )
 
-                 def jacocoReport = sh 'cat target/site/jacoco/index.html | grep <td class="ctr2">'
+                 def jacocoReport = sh "cat target/site/jacoco/index.html | grep '<td class=\"ctr2\">'"
 
                  // Getting information from html
-                 def ulDom = new XmlSlurper().parseText(jacocoReport)
+                 /*def ulDom = new XmlSlurper().parseText(jacocoReport)
                  def elements = ulDom.table.findAll {
                     echo it.localText()
-                 }
+                 }*/
 
                  try {
                     pullRequest.removeLabel('JenkinsReviewFailed')
