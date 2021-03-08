@@ -18,14 +18,16 @@ node {
                        classPattern: 'target/classes',
                        sourcePattern: 'src/main/java',
                        exclusionPattern: 'src/test*',
-                       minimumInstructionCoverage: coverage
+                       minimumLineCoverage: coverage
                  )
-                 pullRequest.removeLabel('JenkinsReviewFailed')
-                 pullRequest.addLabel('JenkinsReviewPassed')
-                 pullRequest.review('APPROVE', 'The execution, coverage and unit test failure verification passed successfully. This can be merged without issues.')
 
-                sh 'ls'
-
+                 try {
+                    pullRequest.removeLabel('JenkinsReviewFailed')
+                    pullRequest.addLabel('JenkinsReviewPassed')
+                    pullRequest.review('APPROVE', 'The execution, coverage and unit test failure verification passed successfully. This can be merged without issues.')
+                 } catch(ex) {
+                    echo "Published"
+                 }
             } catch (all) {
                 def error = "${all}"
                 echo error
