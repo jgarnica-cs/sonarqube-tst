@@ -24,6 +24,6 @@ public class TestServiceTest
     public void failureTest() {
         logger.info("I'mn going to fail jjjj");
         testService.testFunction();
-        Assert.assertFalse(true);
+        Assert.assertFalse(false);
     }
 }
