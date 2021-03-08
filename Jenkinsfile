@@ -7,6 +7,7 @@ node {
 
         def mvn = tool 'Maven 3.6.3';
         echo "Showing event ID"
+        def coverage = '0'// replace with a Jenkins parameter or create a job to read from env
         if (env.CHANGE_ID) {
             echo env.CHANGE_ID
             try {
@@ -17,9 +18,8 @@ node {
                        classPattern: 'target/classes',
                        sourcePattern: 'src/main/java',
                        exclusionPattern: 'src/test*',
-                       minimumInstructionCoverage: '100'
+                       minimumInstructionCoverage: coverage
                  )
-                 echo "Holiiiiiii"
                  pullRequest.removeLabel('JenkinsReviewFailed')
                  pullRequest.addLabel('JenkinsReviewPassed')
                  pullRequest.review('APPROVE', 'The execution, coverage and unit test failure verification passed successfully. This can be merged without issues.')
@@ -27,8 +27,7 @@ node {
                 sh 'ls'
 
             } catch (all) {
-                echo "${all}"
-                echo 'on the exception! '
+                def error = "${all}"
                 if(all == "hudson.AbortException: script returned exit code 1") {
                     pullRequest.review('REQUEST_CHANGES', 'The build had failed. Maybe some of your unit tests are failing up')
                 } else {
