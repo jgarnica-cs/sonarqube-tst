@@ -25,10 +25,11 @@ node {
                     returnStdout: true
                  ).trim()
 
+                // Find a better way to do so, try to check XmlSlurper
                 echo jacocoReport
                 def index = jacocoReport.indexOf('<td class="ctr2">')
                 echo index.toString()
-                echo jacocoReport.substring(index + 17, index + 20)
+                def lineCoverage = jacocoReport.substring(index + 17, index + 20)
 
                  // Getting information from html
                  /*def ulDom = new XmlSlurper().parseText(jacocoReport)
@@ -39,7 +40,7 @@ node {
                  try {
                     pullRequest.removeLabel('JenkinsReviewFailed')
                     pullRequest.addLabel('JenkinsReviewPassed')
-                    pullRequest.review('APPROVE', 'The execution, coverage and unit test failure verification passed successfully. This can be merged without issues.')
+                    pullRequest.review('APPROVE', 'The execution, coverage and unit test failure verification passed successfully. \n Line coverage: ${lineCoverage}')
                  } catch(ex) {
                     echo "Published"
                  }
