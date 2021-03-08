@@ -27,7 +27,7 @@ node {
 
                 echo jacocoReport
                 def index = jacocoReport.indexOf('<td class="ctr2">')
-                echo index
+                echo index.toString()
 
                  // Getting information from html
                  /*def ulDom = new XmlSlurper().parseText(jacocoReport)
