@@ -21,12 +21,13 @@ node {
                  )
 
                  def jacocoReport = sh(
-                    script: "cat target/site/jacoco/index.html | grep '<td class=\"ctr2\">'",
+                    script: "cat target/site/jacoco/index.html",
                     returnStdout: true
-                    ).trim()
+                 ).trim()
 
                 echo jacocoReport
-
+                def index = jacocoReport.indexOf('<td class="ctr2">')
+                echo index
 
                  // Getting information from html
                  /*def ulDom = new XmlSlurper().parseText(jacocoReport)
