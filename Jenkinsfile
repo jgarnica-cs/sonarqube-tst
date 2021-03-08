@@ -40,7 +40,7 @@ node {
                  try {
                     pullRequest.removeLabel('JenkinsReviewFailed')
                     pullRequest.addLabel('JenkinsReviewPassed')
-                    pullRequest.review('APPROVE', 'The execution, coverage and unit test failure verification passed successfully. \n Line coverage: ${lineCoverage}')
+                    pullRequest.review('APPROVE', 'The execution, coverage and unit test failure verification passed successfully. Line coverage: ${lineCoverage}')
                  } catch(ex) {
                     echo "Published"
                  }
