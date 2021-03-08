@@ -6,10 +6,9 @@ node {
     withEnv(['PATH+EXTRA=/usr/sbin:/usr/bin:/sbin:/bin']) {
 
         def mvn = tool 'Maven 3.6.3';
-        echo "Showing event ID"
         def coverage = '100'// replace with a Jenkins parameter or create a job to read from env
         if (env.CHANGE_ID) {
-            echo env.CHANGE_ID
+
             try {
                 // Checkout to develop and run mvn test
                  sh "${mvn}/bin/mvn test"
@@ -20,6 +19,14 @@ node {
                        exclusionPattern: 'src/test*',
                        minimumLineCoverage: coverage
                  )
+
+                 def jacocoReport = sh 'cat target/site/jacoco/index.html'
+
+                 // Getting information from html
+                 def ulDom = new XmlSlurper().parseText(jacocoReport)
+                 def elements = ulDom.table.findAll {
+                    echo it.localText()
+                 }
 
                  try {
                     pullRequest.removeLabel('JenkinsReviewFailed')
