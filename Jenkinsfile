@@ -7,7 +7,7 @@ node {
 
         def mvn = tool 'Maven 3.6.3';
         echo "Showing event ID"
-        def coverage = '0'// replace with a Jenkins parameter or create a job to read from env
+        def coverage = '80'// replace with a Jenkins parameter or create a job to read from env
         if (env.CHANGE_ID) {
             echo env.CHANGE_ID
             try {
