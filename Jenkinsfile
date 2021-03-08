@@ -28,9 +28,12 @@ node {
 
             } catch (all) {
                 def error = "${all}"
+                echo error
                 if(all == "hudson.AbortException: script returned exit code 1") {
+                    echo "Exception detected: test errors"
                     pullRequest.review('REQUEST_CHANGES', 'The build had failed. Maybe some of your unit tests are failing up')
                 } else {
+                    echo "Exception detected: error on the build"
                     pullRequest.review('REQUEST_CHANGES', 'Error on the build')
                 }
 
