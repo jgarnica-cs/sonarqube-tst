@@ -99,7 +99,7 @@
                                 <rule>
                                     <limits>
                                         <limit>
-                                            <minimum>0.01</minimum>
+                                            <minimum>80</minimum>
                                         </limit>
                                     </limits>
                                 </rule>
