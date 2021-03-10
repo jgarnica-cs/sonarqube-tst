@@ -11,7 +11,7 @@ node {
 
             try {
                 // Checkout to develop and run mvn test
-                 sh "${mvn}/bin/mvn test"
+                 sh "${mvn}/bin/mvn install"
                  jacoco(
                        execPattern: 'target/*.exec',
                        classPattern: 'target/classes',
