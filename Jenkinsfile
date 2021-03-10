@@ -37,6 +37,7 @@ node {
                     echo it.localText()
                  }*/
 
+
                  try {
                     pullRequest.review('APPROVE', "The execution, coverage and unit test failure verification passed successfully.")
                     pullRequest.addLabel('JenkinsReviewPassed')
