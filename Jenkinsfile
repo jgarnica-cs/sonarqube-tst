@@ -38,9 +38,9 @@ node {
                  }*/
 
                  try {
-                    pullRequest.removeLabel('JenkinsReviewFailed')
-                    pullRequest.addLabel('JenkinsReviewPassed')
                     pullRequest.review('APPROVE', "The execution, coverage and unit test failure verification passed successfully.")
+                    pullRequest.addLabel('JenkinsReviewPassed')
+                    pullRequest.removeLabel('JenkinsReviewFailed')
                  } catch(ex) {
                     echo "Published"
                  }
@@ -56,8 +56,8 @@ node {
                 }
 
                 try {
-                    pullRequest.removeLabel('JenkinsReviewPassed')
                     pullRequest.addLabel('JenkinsReviewFailed')
+                    pullRequest.removeLabel('JenkinsReviewPassed')
                 } catch(ex) {
                     echo 'Finished'
                 }
