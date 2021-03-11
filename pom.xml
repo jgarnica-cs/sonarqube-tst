@@ -71,6 +71,19 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <plugin>
+                <groupId>org.openclover</groupId>
+                <artifactId>clover-maven-plugin</artifactId>
+                <configuration>
+                    <generatePdf>true</generatePdf>
+                    <generateHtml>true</generateHtml>
+                    <generateXml>true</generateXml>
+                    <skip>false</skip>
+                </configuration>
+                <version>4.3.1</version>
+            </plugin>
+
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
