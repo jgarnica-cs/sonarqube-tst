@@ -79,6 +79,8 @@
                     <generatePdf>true</generatePdf>
                     <generateHtml>true</generateHtml>
                     <generateXml>true</generateXml>
+                    <includesTestSourceRoots>true</includesTestSourceRoots>
+                    <includesAllSourceRoots>true</includesAllSourceRoots>
                     <skip>false</skip>
                 </configuration>
                 <version>4.3.1</version>
