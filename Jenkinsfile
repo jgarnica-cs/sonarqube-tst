@@ -8,7 +8,7 @@ node {
 
         def mvn = tool 'Maven 3.6.3';
         def coverage = '100'// replace with a Jenkins parameter or create a job to read from env
-        if (env.CHANGE_ID) {
+        if (env.BRANCH_NAME != 'master' && env.CHANGE_ID == null) {
 
             try {
                 // Checkout to develop and run mvn test
