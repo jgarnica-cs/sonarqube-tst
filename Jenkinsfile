@@ -1,6 +1,7 @@
 node {
     git 'https://github.com/jgarnica-cs/sonarqube-tst'
-    sh "mvn clean clover:setup test clover:aggregate clover:clover"
+    def mvn = tool 'Maven 3.6.3';
+    sh "${mvn}/bin/mvn clean clover:setup test clover:aggregate clover:clover"
     step([
       $class: 'CloverPublisher',
       cloverReportDir: 'target/site',
