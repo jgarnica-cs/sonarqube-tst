@@ -21,18 +21,6 @@ node {
                        unhealthyTarget: [methodCoverage: 50, conditionalCoverage: 50, statementCoverage: 50], // optional, default is none
                        failingTarget: [methodCoverage: 0, conditionalCoverage: 0, statementCoverage: 0]     // optional, default is none
                      ])
-//                  jacoco(
-//                        execPattern: 'target/*.exec',
-//                        classPattern: 'target/classes',
-//                        sourcePattern: 'src/main/java',
-//                        exclusionPattern: 'src/test*',
-//                        minimumLineCoverage: coverage
-//                  )
-
-//                  def cloverReport = sh(
-//                     script: "cat target/site/clover/dashboard.html",
-//                     returnStdout: true
-//                  ).trim()
 
                  // read our HTML report into a String
                  String report = readFile ("target/site/clover/dashboard.html")
@@ -48,20 +36,6 @@ node {
                  e2ePassed = passedMatch[0] as Float
 
                  println ("Passed: ${e2ePassed}")
-
-//                  sh "echo \"Passed: ${e2ePassed}\""
-
-                // Find a better way to do so, try to check XmlSlurper
-//                 echo cloverReport
-//                 def index = cloverReport.indexOf('span class="sortValue">')
-//                 echo index.toString()
-//                 def lineCoverage = cloverReport.substring(index + 17, index + 20)
-
-                 // Getting information from html
-                 /*def ulDom = new XmlSlurper().parseText(jacocoReport)
-                 def elements = ulDom.table.findAll {
-                    echo it.localText()
-                 }*/
 
                  try {
                     pullRequest.review('APPROVE', "The execution, coverage and unit test failure verification passed successfully.")
