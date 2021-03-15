@@ -42,7 +42,7 @@ node {
                  def foundPassedLine = lines.find{ line-> line =~ /div class="barPositive contribBarPositive "/ }
 
                  // match for the numeric values
-                 def passedMatch = (foundPassedLine =~ /[0-9]+/)
+                 def passedMatch = (foundPassedLine =~ /[0-9]+[.][0-9]+/)
 
                  // cast to Integer so we can work with the number values
                  e2ePassed = passedMatch[0] as Integer
