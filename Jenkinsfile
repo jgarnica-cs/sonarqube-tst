@@ -49,7 +49,7 @@ node {
 
                  println ("Passed: ${e2ePassed}")
 
-                 sh "echo \"Passed: ${e2ePassed}\""
+//                  sh "echo \"Passed: ${e2ePassed}\""
 
                 // Find a better way to do so, try to check XmlSlurper
 //                 echo cloverReport
