@@ -8,6 +8,7 @@ node {
 
         def mvn = tool 'Maven 3.6.3';
         def coverage = '100'// replace with a Jenkins parameter or create a job to read from env
+        echo "env.CHANGE_ID ${env.CHANGE_ID}"
         if (env.BRANCH_NAME != 'master' && env.CHANGE_ID == null) {
 
             try {
@@ -37,16 +38,18 @@ node {
 
                  println ("Passed: ${e2ePassed}")
 
+                 echo "Current Pull Request ID: ${pullRequest.id}"
+
                  try {
                     pullRequest.review('APPROVE', "The execution, coverage and unit test failure verification passed successfully.")
                     pullRequest.addLabel('JenkinsReviewPassed')
                     pullRequest.removeLabel('JenkinsReviewFailed')
                  } catch(ex) {
-                    echo "Published"
+                    echo "Published ${ex}"
                  }
             } catch (all) {
-                def error = "${all}"
-                echo "Error" error
+                // def error = "${all}"
+                echo "Error ${all}"
                 if(error.contains("hudson.AbortException: script returned exit code 1")) {
                     echo "Exception detected: test errors"
                     pullRequest.review('REQUEST_CHANGES', 'The build had failed. Maybe some of your unit tests are failing up')
