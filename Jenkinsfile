@@ -1,5 +1,5 @@
 node {
-  git 'https://github.com/jgarnica-cs/sonarqube-tst'
+  git 'https://github.com/eramirez-cs/sonarqube-tst'
   stage('SCM') {
     checkout scm
   }
@@ -33,7 +33,7 @@ node {
                  def passedMatch = (foundPassedLine =~ /[0-9]+[.][0-9]+/)
 
                  // cast to Integer so we can work with the number values
-                 e2ePassed = passedMatch[0] as Float
+                 def e2ePassed = passedMatch[0] as Float
 
                  println ("Passed: ${e2ePassed}")
 
