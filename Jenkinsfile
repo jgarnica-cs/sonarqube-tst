@@ -10,8 +10,9 @@ node {
         if (env.CHANGE_ID) {
 
             try {
+                echo sh(script: 'env|sort', returnStdout: true)
                 // Checkout to develop and run mvn test
-                 sh "${mvn}/bin/mvn test"
+                 sh "${mvn}/bin/mvn install"
                  jacoco(
                        execPattern: 'target/*.exec',
                        classPattern: 'target/classes',
